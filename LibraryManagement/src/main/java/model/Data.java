@@ -57,12 +57,15 @@ public class Data {
         books.add(new Book(id, title, author, subject, isbn));
     }
 
-    public void updBook(Book curBook, Book newBook){
-        curBook.setId(newBook.getId());
-        curBook.setTitle(newBook.getTitle());
-        curBook.setAuthor(newBook.getAuthor());
-        curBook.setSubject(newBook.getSubject());
-        curBook.setIsbn(newBook.getIsbn());
+    public void updBook(String id, String title, String author, String subject, String isbn){
+        Book book = getBook(id);
+        if (book != null)
+        {
+            book.setTitle(title);
+            book.setAuthor(author);
+            book.setSubject(subject);
+            book.setIsbn(isbn);
+        }
     }
 
     public void delBook(String id){
@@ -75,10 +78,10 @@ public class Data {
     public void initMembersData (){
         for (int i = 1; i <= 100; i++)
         {
-            String strID 	= String.format("%03d", i);
-            String strName = String.format("Name %03d", i);
-            String strAddress = String.format("Address %03d", i);
-            String strPhone = String.format("Phone %03d", i);
+            String strID 	    = String.format("%03d", i);
+            String strName      = String.format("Name %03d", i);
+            String strAddress   = String.format("Address %03d", i);
+            String strPhone     = String.format("Phone %03d", i);
             members.add(new Member(strID, strName, strAddress, strPhone));
         }
     }
@@ -115,11 +118,14 @@ public class Data {
         members.add(new Member(id, name, address, phone));
     }
 
-    public void updMember(Member curMem, Member newMem){
-        curMem.setId(newMem.getId());
-        curMem.setName(newMem.getName());
-        curMem.setAddress(newMem.getAddress());
-        curMem.setPhone(newMem.getPhone());
+    public void updMember(String id, String name, String address, String phone){
+        Member member = getMember(id);
+        if (member != null)
+        {
+            member.setName(name);
+            member.setAddress(address);
+            member.setPhone(phone);
+        }
     }
 
     public void delMember(String id){
