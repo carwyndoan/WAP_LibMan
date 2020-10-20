@@ -49,7 +49,7 @@ public class MemberMnServlet extends HttpServlet {
         String address  = req.getParameter("address");
         String phone    = req.getParameter("phone");
         // Update the Member
-        data.updMember(id, name, address, phone);
+        // data.updMember(id, name, address, phone);
         // Send data to client
         sendToClient(data, req, resp);
     }

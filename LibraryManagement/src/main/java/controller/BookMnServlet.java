@@ -51,7 +51,7 @@ public class BookMnServlet extends HttpServlet {
         String subject = req.getParameter("subject");
         String isbn = req.getParameter("isbn");
         // Update the book
-        data.updBook(id, title, author, subject, isbn);
+        // data.updBook(id, title, author, subject, isbn);
         // Send data to client
         sendToClient(data, req, resp);
     }
