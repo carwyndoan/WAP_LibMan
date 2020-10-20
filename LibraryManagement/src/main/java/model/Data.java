@@ -1,6 +1,7 @@
 package model;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Data {
     private List<Book> books;
@@ -58,6 +59,12 @@ public class Data {
             books.remove(idx);
     }
 
+    public List<Book> searchBook(String name){
+        return books.stream()
+                .filter(b -> b.getTitle().equals(name))
+                .collect(Collectors.toList());
+    }
+
     // ------------------- Member Management
     public List<Member> getMemberList(){
         return members;
@@ -102,6 +109,12 @@ public class Data {
         int idx = getMemberIdx(id);
         if (idx != -1)
             members.remove(idx);
+    }
+
+    public List<Member> searchMember(String name){
+        return members.stream()
+                .filter(m -> m.getName().equals(name))
+                .collect(Collectors.toList());
     }
 
 }
