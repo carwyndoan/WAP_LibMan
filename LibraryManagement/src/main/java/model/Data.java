@@ -17,7 +17,7 @@ public class Data {
         for (int i = 1; i <= 100; i++)
         {
             String strID 	= String.format("%03d", i);
-            String strTitle = String.format("Title %03", i);
+            String strTitle = String.format("Title %03d", i);
             String strAuthor = String.format("Author %03d", i);
             String strSubject = String.format("Subject %03d", i);
             String strIsbn = String.format("ISBN%03d", i);
@@ -76,7 +76,7 @@ public class Data {
         for (int i = 1; i <= 100; i++)
         {
             String strID 	= String.format("%03d", i);
-            String strName = String.format("Name %03", i);
+            String strName = String.format("Name %03d", i);
             String strAddress = String.format("Address %03d", i);
             String strPhone = String.format("Phone %03d", i);
             members.add(new Member(strID, strName, strAddress, strPhone));
@@ -127,5 +127,4 @@ public class Data {
         if (idx != -1)
             members.remove(idx);
     }
-
 }
