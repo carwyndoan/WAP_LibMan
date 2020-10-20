@@ -1,7 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Data {
     private List<Book> books;
@@ -13,19 +12,7 @@ public class Data {
     }
 
     // ------------------- Book Management
-    public void initBooksData (){
-        for (int i = 1; i <= 100; i++)
-        {
-            String strID 	= String.format("%03d", i);
-            String strTitle = String.format("Title %03d", i);
-            String strAuthor = String.format("Author %03d", i);
-            String strSubject = String.format("Subject %03d", i);
-            String strIsbn = String.format("ISBN%03d", i);
-            books.add(new Book(strID, strTitle, strAuthor, strSubject, strIsbn));
-        }
-    }
-
-    public List getBookList(){
+    public List<Book> getBookList(){
         return books;
     }
 
@@ -57,15 +44,12 @@ public class Data {
         books.add(new Book(id, title, author, subject, isbn));
     }
 
-    public void updBook(String id, String title, String author, String subject, String isbn){
-        Book book = getBook(id);
-        if (book != null)
-        {
-            book.setTitle(title);
-            book.setAuthor(author);
-            book.setSubject(subject);
-            book.setIsbn(isbn);
-        }
+    public void updBook(Book curBook, Book newBook){
+        curBook.setId(newBook.getId());
+        curBook.setTitle(newBook.getTitle());
+        curBook.setAuthor(newBook.getAuthor());
+        curBook.setSubject(newBook.getSubject());
+        curBook.setIsbn(newBook.getIsbn());
     }
 
     public void delBook(String id){
@@ -75,18 +59,7 @@ public class Data {
     }
 
     // ------------------- Member Management
-    public void initMembersData (){
-        for (int i = 1; i <= 100; i++)
-        {
-            String strID 	    = String.format("%03d", i);
-            String strName      = String.format("Name %03d", i);
-            String strAddress   = String.format("Address %03d", i);
-            String strPhone     = String.format("Phone %03d", i);
-            members.add(new Member(strID, strName, strAddress, strPhone));
-        }
-    }
-
-    public List getMemberList(){
+    public List<Member> getMemberList(){
         return members;
     }
 
@@ -118,14 +91,11 @@ public class Data {
         members.add(new Member(id, name, address, phone));
     }
 
-    public void updMember(String id, String name, String address, String phone){
-        Member member = getMember(id);
-        if (member != null)
-        {
-            member.setName(name);
-            member.setAddress(address);
-            member.setPhone(phone);
-        }
+    public void updMember(Member curMem, Member newMem){
+        curMem.setId(newMem.getId());
+        curMem.setName(newMem.getName());
+        curMem.setAddress(newMem.getAddress());
+        curMem.setPhone(newMem.getPhone());
     }
 
     public void delMember(String id){
@@ -133,4 +103,5 @@ public class Data {
         if (idx != -1)
             members.remove(idx);
     }
+
 }
