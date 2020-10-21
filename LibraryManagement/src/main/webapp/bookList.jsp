@@ -162,7 +162,7 @@
           <tr><td><label for="subject">Subject</label></td><td><input type="text" id="subject" name="subject"></td></tr>
           <tr><td><label for="isbn">ISBN</label></td><td><input type="text" id="isbn" name="isbn"></td></tr>
           <tr><td></td><td>
-            <input type="button" value="  Add " id="add">
+            <input type="button" value="Add" id="add">
             <input type="button" value="Update" id="upd">
             <input type="button" value="Delete" id="del">
           </td></tr>

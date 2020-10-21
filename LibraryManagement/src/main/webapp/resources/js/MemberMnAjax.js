@@ -115,11 +115,9 @@ function dispMemberList(respJson) {
         // template method of yourself
         let html = template(data);
         dataContainer.html(html);
-    }
-})
-
+        }
+    })
 }
-
 
 function ExportToExcel(mytblId){
     var htmltable= document.getElementById('members');

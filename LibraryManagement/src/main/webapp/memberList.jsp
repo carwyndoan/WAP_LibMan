@@ -38,10 +38,6 @@
         // Provide a signal that JS will load
         document.body.className += ' client-js';
     </script>
-
-
-
-
     <div id="topNotice">
         <div class="page-banner page-banner-black page-banner-center">
             <div class="iaBar">
@@ -73,7 +69,6 @@
                     <li><a href="https://openlibrary.org/developers">Return Books</a></li>
                     <li><a href="https://openlibrary.org/help">Search Members</a></li>
                     <li><a href="https://openlibrary.org/help">Search Books</a></li>
-
                 </ul>
             </div>
         </div>
@@ -136,15 +131,11 @@
                         <li><a href="https://openlibrary.org/developers">Return Books</a></li>
                         <li><a href="https://openlibrary.org/help">Search Members</a></li>
                         <li><a href="https://openlibrary.org/help">Search Books</a></li>
-
                     </ul>
                 </div>
             </li>
         </ul>
-
-
     </header>
-
 
     <div id="test-body-mobile">
         <div id="contentHead">
@@ -170,11 +161,9 @@
                 </form>
             </div>
             <div id="tabsHistory" class="tabs autohash ui-tabs ui-corner-all ui-widget ui-widget-content">
-
                 <div id="humans" aria-labelledby="ui-id-1" role="tabpanel"
                     class="ui-tabs-panel ui-corner-bottom ui-widget-content" aria-hidden="false"
                     style="display: block;">
-
                     <table class="changeHistory" id="members">
                         <thead>
                             <tr>
@@ -185,37 +174,24 @@
                             </tr>
                         </thead>
                         <tbody id="memberBody">
-
-                        
                         </tbody>
                     </table>
 
                     <div class="historyPager small sansserif gray">
                         <a href="/recentchanges/lists?page=2#all" rel="nofollow"><- Older</a>
+                        <input type="button" value="Export to Excel" id="toexcel">
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     </div>
 
-
-
-
     <div class="clearfix"></div>
-
-
     <footer>
         <div id="footer-content">
-
             <hr>
-
         </div>
     </footer>
-
-
     <div id="cboxOverlay" style="display: none;"></div>
     <div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
         <div id="cboxWrapper">

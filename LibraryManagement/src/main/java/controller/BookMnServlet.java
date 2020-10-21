@@ -31,7 +31,6 @@ public class BookMnServlet extends HttpServlet {
         } else if (cmdType.equals("del")){
             doDelBook(data, req, resp);
         }
-
     }
 
     public void doLoadInitBooks(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
