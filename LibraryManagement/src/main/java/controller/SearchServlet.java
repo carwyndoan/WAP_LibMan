@@ -30,11 +30,12 @@ public class SearchServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
         String json = "";
+        int pageSize = 13;
         if(kind.equals("book")) {
             List<Book> list = searchBook(name);
             List<Book> lst = list.stream()
-                    .skip((pageno - 1) * 7)
-                    .limit(7)
+                    .skip((pageno - 1) * pageSize)
+                    .limit(pageSize)
                     .collect(Collectors.toList());
             JData jdata = new JData(list.size(), lst);
             json = gson.toJson(jdata);
@@ -42,8 +43,8 @@ public class SearchServlet extends HttpServlet {
         else if(kind.equals("member")) {
             List<Member> list = searchMember(name);
             List<Member> lst = list.stream()
-                    .skip((pageno - 1) * 7)
-                    .limit(7)
+                    .skip((pageno - 1) * pageSize)
+                    .limit(pageSize)
                     .collect(Collectors.toList());
             JData jdata = new JData(list.size(), lst);
             json = gson.toJson(jdata);

@@ -1,5 +1,5 @@
 var current = 1;
-const pageSize = 7;
+const pageSize = 13;
 var numPage = 0;
 var first = 1;
 var last = 10;
