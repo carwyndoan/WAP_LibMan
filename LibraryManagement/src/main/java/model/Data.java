@@ -38,6 +38,8 @@ public class Data {
         curBook.setAuthor(author);
         curBook.setSubject(subject);
         curBook.setIsbn(isbn);
+        // Update
+        books.set(getBookIdx(id), curBook);
     }
 
     public void delBook(String id){
@@ -79,6 +81,8 @@ public class Data {
         curMem.setName(name);
         curMem.setAddress(address);
         curMem.setPhone(phone);
+        // Update
+        members.set(getMemberIdx(id), curMem);
     }
 
     public void delMember(String id){
