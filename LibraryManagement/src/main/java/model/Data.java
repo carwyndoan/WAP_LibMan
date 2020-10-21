@@ -8,8 +8,8 @@ public class Data {
     private ArrayList<Member> members;
 
     public Data(){
-        books   = new ArrayList<Book>();
-        members = new ArrayList<Member>();
+        books   = new ArrayList<>();
+        members = new ArrayList<>();
     }
 
     // ------------------- Book Management
@@ -18,23 +18,28 @@ public class Data {
     }
 
     public Book getBook(String id){
-        for (int i = 0; i < books.size(); i++){
-            Book aBook = books.get(i);
-            if (id.equals(aBook.getId()))
-                books.get(i);
-        }
+//        for (int i = 0; i < books.size(); i++){
+//            Book aBook = books.get(i);
+//            if (id.equals(aBook.getId()))
+//                books.get(i);
+//        }
         // Not Found
-        return null;
+        //return null;
+        return books.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
     }
 
     public int getBookIdx(String id){
-        for (int i = 0; i < books.size(); i++){
-            Book aBook = books.get(i);
-            if (id.equals(aBook.getId()))
-                return i;
-        }
+//        for (int i = 0; i < books.size(); i++){
+//            Book aBook = books.get(i);
+//            if (id.equals(aBook.getId()))
+//                return i;
+//        }
         // Not Found
-        return -1;
+        //return -1;
+        return Integer.parseInt(books.parallelStream()
+                .map(b -> b.getId())
+                .filter(i -> i.equals(id)).findAny()
+                .orElse("-1"));
     }
 
     public void addBook(Book aBook){
@@ -60,8 +65,10 @@ public class Data {
     }
 
     public List<Book> searchBook(String name){
-        return books.stream()
-                .filter(b -> b.getTitle().equals(name))
+        return books.parallelStream()
+                .filter(b -> b.getTitle().toLowerCase().contains(name.toLowerCase())
+                || b.getAuthor().toLowerCase().contains(name.toLowerCase())
+                || b.getIsbn().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
@@ -71,23 +78,28 @@ public class Data {
     }
 
     public Member getMember(String id){
-        for (int i = 0; i < members.size(); i++){
-            Member aMember = members.get(i);
-            if (id.equals(aMember.getId()))
-                members.get(i);
-        }
-        // Not Found
-        return null;
+//        for (int i = 0; i < members.size(); i++){
+//            Member aMember = members.get(i);
+//            if (id.equals(aMember.getId()))
+//                members.get(i);
+//        }
+//        // Not Found
+//        return null;
+        return members.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
     }
 
     public int getMemberIdx(String id){
-        for (int i = 0; i < members.size(); i++){
-            Member aMember = members.get(i);
-            if (id.equals(aMember.getId()))
-                return i;
-        }
-        // Not Found
-        return -1;
+//        for (int i = 0; i < members.size(); i++){
+//            Member aMember = members.get(i);
+//            if (id.equals(aMember.getId()))
+//                return i;
+//        }
+//        // Not Found
+//        return -1;
+        return Integer.parseInt(members.parallelStream()
+                .map(b -> b.getId())
+                .filter(i -> i.equals(id)).findAny()
+                .orElse("-1"));
     }
 
     public void addMember(Member aMember){
@@ -112,8 +124,10 @@ public class Data {
     }
 
     public List<Member> searchMember(String name){
-        return members.stream()
-                .filter(m -> m.getName().equals(name))
+        return members.parallelStream()
+                .filter(m -> m.getName().toLowerCase().contains(name.toLowerCase())
+                || m.getAddress().toLowerCase().contains(name.toLowerCase())
+                || m.getPhone().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
     }
 
