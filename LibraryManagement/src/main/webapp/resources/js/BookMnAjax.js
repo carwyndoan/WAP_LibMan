@@ -1,9 +1,20 @@
 $(document).ready(function () {
     console.log("Document is ready!!!");
+    var isValid = false;
+    onLoadInitData();
     $('#add').click(onAdd);
     $('#upd').click(onUpd);
     $('#del').click(onDel);
+    $('#toexcel').click(ExportToExcel);
 });
+
+function onLoadInitData() {
+    // Prepare parameters
+    let $cmdType = "init";
+    $.post("BookMnServlet",
+        {cmdType: $cmdType},
+        dispBookList);
+}
 
 function onAdd() {
     // Prepare parameters
@@ -13,6 +24,10 @@ function onAdd() {
     let $author = $("#author").val();
     let $subject = $("#subject").val();
     let $isbn = $("#isbn").val();
+    // Check validate
+    checkValidate();
+    if (isValid == false)
+        return;
     // post and receive data
     $.post("BookMnServlet",
         {cmdType: $cmdType, id:$id, title:$title, author:$author, subject:$subject, isbn:$isbn},
@@ -27,6 +42,10 @@ function onUpd() {
     let $author = $("#author").val();
     let $subject = $("#subject").val();
     let $isbn = $("#isbn").val();
+    // Check validate
+    checkValidate();
+    if (isValid == false)
+        return;
     // post and receive data
     $.post("BookMnServlet",
         {cmdType: $cmdType, id:$id, title:$title, author:$author, subject:$subject, isbn:$isbn},
@@ -43,6 +62,19 @@ function onDel() {
         dispBookList);
 }
 
+function checkValidate() {
+    // Prepare parameters
+    let $id = $("#id").val();
+    // Check validate
+    if ($id.trim().length == 0) {
+        alert("ID is required!");
+        $("#id").focus();
+        isValid = false;
+        return;
+    }
+    isValid = true;
+}
+
 function dispBookList(respJson) {
     // Remove old Data
     let $table = $('#books');
@@ -56,6 +88,17 @@ function dispBookList(respJson) {
         let colAuthor = $('<td></td>').text(book.author).appendTo($row);
         let colSubject = $('<td></td>').text(book.subject).appendTo($row);
         let colIsbn = $('<td></td>').text(book.isbn).appendTo($row);
+        // Link Checkout
+        let href = "/bookCheckout.jsp?bookId=" + book.id;
+        let collinkCO = $('<td></td>').appendTo($row);
+        $('<a></a>').val(href).text("Checkout").appendTo(collinkCO);
+
         $row.appendTo($table);
     });
+}
+
+function ExportToExcel(mytblId){
+    var htmltable= document.getElementById('books');
+    var html = htmltable.outerHTML;
+    window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
 }

@@ -7,9 +7,15 @@ public class Data {
     private List<Book> books;
     private ArrayList<Member> members;
 
+    /*nam*/
+    private List<Borrow> borrows;
+    /*end of nam*/
     public Data(){
         books   = new ArrayList<>();
         members = new ArrayList<>();
+        //nam
+        borrows = new ArrayList<Borrow>();
+
     }
 
     // ------------------- Book Management
@@ -22,6 +28,12 @@ public class Data {
     }
 
     public int getBookIdx(String id){
+/*
+        return Integer.parseInt(books.parallelStream()
+                .map(b -> b.getId())
+                .filter(i -> i.equals(id)).findAny()
+                .orElse("-1"));
+*/
         for (int i=0; i < books.size(); i++){
             if (books.get(i).getId().equals(id))
                 return i;
@@ -70,6 +82,13 @@ public class Data {
     }
 
     public int getMemberIdx(String id){
+/*
+        return Integer.parseInt(members.parallelStream()
+
+                .map(b -> b.getId())
+                .filter(i -> i.equals(id)).findAny()
+                .orElse("-1"));
+ */
         for (int i=0; i < members.size(); i++){
             if (members.get(i).getId().equals(id))
                 return i;
@@ -106,4 +125,25 @@ public class Data {
                 || m.getPhone().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
     }
+
+    //nam
+    public List<Borrow> getBorrowList(){
+        return borrows;
+    }
+
+    public List<Borrow> getBorrowRecordsForMember(Member member){
+        List<Borrow> temp = new ArrayList<>();
+        for (int i = 0; i < borrows.size(); i++){
+            Borrow borrow = borrows.get(i);
+            if (borrow.getMember().getId().equals(member.getId()))
+                temp.get(i);
+        }
+        // Not Found
+        return temp;
+    }
+
+    public void addBorrow(Borrow borrow){
+        borrows.add(borrow);
+    }
+    //end of nam
 }
