@@ -12,6 +12,7 @@ function onAdd() {
     let $name = $("#name").val();
     let $address = $("#address").val();
     let $phone = $("#phone").val();
+
     // post and receive data
     $.post("MemberMnServlet",
         {cmdType: $cmdType, id:$id, name:$name, address:$address, phone:$phone},
@@ -43,16 +44,16 @@ function onDel() {
 
 function dispMemberList(respJson) {
     // Remove old Data
-    let $table = $('#Members');
-    $table.find($('.Member')).remove();
+    let $table = $('#members');
+    $table.find($('.member')).remove();
     // Update new data
-    $.each(respJson, function(i, Member){
+    $.each(respJson, function(i, member){
         // New Row
         let $row = $("<tr></tr>").addClass("Member");
-        let colId = $('<td></td>').text(Member.id).appendTo($row);
-        let colName = $('<td></td>').text(Member.name).appendTo($row);
-        let colAddress = $('<td></td>').text(Member.address).appendTo($row);
-        let colPhone = $('<td></td>').text(Member.phone).appendTo($row);
+        let colId = $('<td></td>').text(member.id).appendTo($row);
+        let colName = $('<td></td>').text(member.name).appendTo($row);
+        let colAddress = $('<td></td>').text(member.address).appendTo($row);
+        let colPhone = $('<td></td>').text(member.phone).appendTo($row);
         $row.appendTo($table);
     });
 }

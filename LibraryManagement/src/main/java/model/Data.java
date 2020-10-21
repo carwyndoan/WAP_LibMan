@@ -96,12 +96,14 @@ public class Data {
     }
 
     public void updMember(String id, String name, String address, String phone){
+        int curIdx = getMemberIdx(id);
         Member curMem = getMember(id);
+
         curMem.setName(name);
         curMem.setAddress(address);
         curMem.setPhone(phone);
         // Update
-        members.set(getMemberIdx(id), curMem);
+        members.set(curIdx, curMem);
     }
 
     public void delMember(String id){
