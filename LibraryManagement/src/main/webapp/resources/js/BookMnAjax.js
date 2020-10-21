@@ -5,6 +5,7 @@ $(document).ready(function () {
     $('#add').click(onAdd);
     $('#upd').click(onUpd);
     $('#del').click(onDel);
+    $('#toexcel').click(ExportToExcel);
 });
 
 function onLoadInitData() {
@@ -87,6 +88,17 @@ function dispBookList(respJson) {
         let colAuthor = $('<td></td>').text(book.author).appendTo($row);
         let colSubject = $('<td></td>').text(book.subject).appendTo($row);
         let colIsbn = $('<td></td>').text(book.isbn).appendTo($row);
+        // Link Checkout
+        let href = "/bookCheckout.jsp?bookId=" + book.id;
+        let collinkCO = $('<td></td>').appendTo($row);
+        $('<a></a>').val(href).text("Checkout").appendTo(collinkCO);
+
         $row.appendTo($table);
     });
+}
+
+function ExportToExcel(mytblId){
+    var htmltable= document.getElementById('books');
+    var html = htmltable.outerHTML;
+    window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
 }

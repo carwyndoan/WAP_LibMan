@@ -4,7 +4,6 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
   <meta name="title" content="">
   <meta name="keywords"
         content="free books, books to read, free ebooks,audio books,read books for free, read books online, online library">
@@ -26,21 +25,13 @@
         content="Open Library is an open, editable library catalog, building towards a web page for every book ever published. Read, borrow, and discover more than 3M books for free.">
 
   <title>Welcome to Open Library | Open Library</title>
-
-
 </head>
-
-
-
 
 <body id="home" class=" client-js" style="">
 <script>
   // Provide a signal that JS will load
   document.body.className += ' client-js';
 </script>
-
-
-
 
 <div id="topNotice">
   <div class="page-banner page-banner-black page-banner-center">
@@ -55,7 +46,6 @@
            data-ol-link-track="IABar|DonateButton">Due Notification<span class="heart"
                                                                          aria-hidden="true">0</span></a>
       </div>
-
     </div>
   </div>
 </div>
@@ -73,7 +63,6 @@
         <li><a href="https://openlibrary.org/developers">Return Books</a></li>
         <li><a href="https://openlibrary.org/help">Search Members</a></li>
         <li><a href="https://openlibrary.org/help">Search Books</a></li>
-
       </ul>
     </div>
   </div>
@@ -141,7 +130,6 @@
     </li>
   </ul>
 
-
 </header>
 
 
@@ -183,23 +171,19 @@
             <th>AUTHOR</th>
             <th>SUBJECT</th>
             <th>ISBN</th>
+            <th></th>
           </tr>
           </thead>
           <tbody id="booksBody">
-
-
           </tbody>
         </table>
-
         <div class="historyPager small sansserif gray">
           <a href="/recentchanges/lists?page=2#all" rel="nofollow"><- Older</a>
+          <input type="button" value="Export to Excel" id="toexcel">
         </div>
       </div>
     </div>
   </div>
-
-
-
 </div>
 
 
