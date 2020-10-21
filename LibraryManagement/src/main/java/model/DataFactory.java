@@ -17,7 +17,7 @@ public class DataFactory {
     }
 
     private static void initBooksData (){
-        for (int i = 1; i <= 100; i++)
+        for (int i = 1; i <= 3; i++)
         {
             String strID 	= String.format("%03d", i);
             String strTitle = String.format("Title %03d", i);
@@ -29,7 +29,7 @@ public class DataFactory {
     }
 
     private static void initMembersData (){
-        for (int i = 1; i <= 100; i++)
+        for (int i = 1; i <= 3; i++)
         {
             String strID 	= String.format("%03d", i);
             String strName = String.format("Name %03d", i);

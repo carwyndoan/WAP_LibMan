@@ -22,10 +22,18 @@ public class Data {
     }
 
     public int getBookIdx(String id){
+/*
         return Integer.parseInt(books.parallelStream()
                 .map(b -> b.getId())
                 .filter(i -> i.equals(id)).findAny()
                 .orElse("-1"));
+*/
+        for (int i=0; i < books.size(); i++){
+            if (books.get(i).getId().equals(id))
+                return i;
+        }
+        // not found
+        return -1;
     }
 
     public void addBook(String id, String title, String author, String subject, String isbn){
@@ -33,13 +41,15 @@ public class Data {
     }
 
     public void updBook(String id, String title, String author, String subject, String isbn){
+        int curIdx = getBookIdx(id);
         Book curBook = getBook(id);
+
         curBook.setTitle(title);
         curBook.setAuthor(author);
         curBook.setSubject(subject);
         curBook.setIsbn(isbn);
         // Update
-        books.set(getBookIdx(id), curBook);
+        books.set(curIdx, curBook);
     }
 
     public void delBook(String id){
@@ -66,10 +76,19 @@ public class Data {
     }
 
     public int getMemberIdx(String id){
+/*
         return Integer.parseInt(members.parallelStream()
+
                 .map(b -> b.getId())
                 .filter(i -> i.equals(id)).findAny()
                 .orElse("-1"));
+ */
+        for (int i=0; i < members.size(); i++){
+            if (members.get(i).getId().equals(id))
+                return i;
+        }
+        // not found
+        return -1;
     }
 
      public void addMember(String id, String name, String address, String phone){
