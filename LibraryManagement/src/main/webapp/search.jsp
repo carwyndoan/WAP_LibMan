@@ -11,6 +11,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/common.js"></script>
     <script type="text/javascript" src="resources/js/lib.js"></script>
 </head>
 <body>
@@ -33,6 +34,10 @@
             <tbody id="list">
             </tbody>
         </table>
+        <nav aria-label="Page navigation">
+            <ul class="pagination pg-blue" id="pagination">
+            </ul>
+        </nav>
     </div>
 </body>
 </html>

@@ -22,12 +22,6 @@ public class Data {
     }
 
     public int getBookIdx(String id){
-/*
-        return Integer.parseInt(books.parallelStream()
-                .map(b -> b.getId())
-                .filter(i -> i.equals(id)).findAny()
-                .orElse("-1"));
-*/
         for (int i=0; i < books.size(); i++){
             if (books.get(i).getId().equals(id))
                 return i;
@@ -76,13 +70,6 @@ public class Data {
     }
 
     public int getMemberIdx(String id){
-/*
-        return Integer.parseInt(members.parallelStream()
-
-                .map(b -> b.getId())
-                .filter(i -> i.equals(id)).findAny()
-                .orElse("-1"));
- */
         for (int i=0; i < members.size(); i++){
             if (members.get(i).getId().equals(id))
                 return i;
@@ -119,5 +106,4 @@ public class Data {
                 || m.getPhone().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
     }
-
 }
