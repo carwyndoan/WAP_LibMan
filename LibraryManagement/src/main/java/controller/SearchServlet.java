@@ -30,7 +30,7 @@ public class SearchServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
         String json = "";
-        int pageSize = 13;
+        int pageSize = 9;
         if(kind.equals("book")) {
             List<Book> list = searchBook(name);
             List<Book> lst = list.stream()
