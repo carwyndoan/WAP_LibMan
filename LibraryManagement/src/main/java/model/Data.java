@@ -18,44 +18,26 @@ public class Data {
     }
 
     public Book getBook(String id){
-//        for (int i = 0; i < books.size(); i++){
-//            Book aBook = books.get(i);
-//            if (id.equals(aBook.getId()))
-//                books.get(i);
-//        }
-        // Not Found
-        //return null;
         return books.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
     }
 
     public int getBookIdx(String id){
-//        for (int i = 0; i < books.size(); i++){
-//            Book aBook = books.get(i);
-//            if (id.equals(aBook.getId()))
-//                return i;
-//        }
-        // Not Found
-        //return -1;
         return Integer.parseInt(books.parallelStream()
                 .map(b -> b.getId())
                 .filter(i -> i.equals(id)).findAny()
                 .orElse("-1"));
     }
 
-    public void addBook(Book aBook){
-        books.add(aBook);
-    }
-
     public void addBook(String id, String title, String author, String subject, String isbn){
         books.add(new Book(id, title, author, subject, isbn));
     }
 
-    public void updBook(Book curBook, Book newBook){
-        curBook.setId(newBook.getId());
-        curBook.setTitle(newBook.getTitle());
-        curBook.setAuthor(newBook.getAuthor());
-        curBook.setSubject(newBook.getSubject());
-        curBook.setIsbn(newBook.getIsbn());
+    public void updBook(String id, String title, String author, String subject, String isbn){
+        Book curBook = getBook(id);
+        curBook.setTitle(title);
+        curBook.setAuthor(author);
+        curBook.setSubject(subject);
+        curBook.setIsbn(isbn);
     }
 
     public void delBook(String id){
@@ -78,43 +60,25 @@ public class Data {
     }
 
     public Member getMember(String id){
-//        for (int i = 0; i < members.size(); i++){
-//            Member aMember = members.get(i);
-//            if (id.equals(aMember.getId()))
-//                members.get(i);
-//        }
-//        // Not Found
-//        return null;
         return members.parallelStream().filter(b -> b.getId().equals(id)).findAny().orElse(null);
     }
 
     public int getMemberIdx(String id){
-//        for (int i = 0; i < members.size(); i++){
-//            Member aMember = members.get(i);
-//            if (id.equals(aMember.getId()))
-//                return i;
-//        }
-//        // Not Found
-//        return -1;
         return Integer.parseInt(members.parallelStream()
                 .map(b -> b.getId())
                 .filter(i -> i.equals(id)).findAny()
                 .orElse("-1"));
     }
 
-    public void addMember(Member aMember){
-        members.add(aMember);
-    }
-
-    public void addMember(String id, String name, String address, String phone){
+     public void addMember(String id, String name, String address, String phone){
         members.add(new Member(id, name, address, phone));
     }
 
-    public void updMember(Member curMem, Member newMem){
-        curMem.setId(newMem.getId());
-        curMem.setName(newMem.getName());
-        curMem.setAddress(newMem.getAddress());
-        curMem.setPhone(newMem.getPhone());
+    public void updMember(String id, String name, String address, String phone){
+        Member curMem = getMember(id);
+        curMem.setName(name);
+        curMem.setAddress(address);
+        curMem.setPhone(phone);
     }
 
     public void delMember(String id){
