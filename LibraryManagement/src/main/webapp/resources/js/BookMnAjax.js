@@ -1,9 +1,19 @@
 $(document).ready(function () {
     console.log("Document is ready!!!");
+    var isValid = false;
+    onLoadInitData();
     $('#add').click(onAdd);
     $('#upd').click(onUpd);
     $('#del').click(onDel);
 });
+
+function onLoadInitData() {
+    // Prepare parameters
+    let $cmdType = "init";
+    $.post("BookMnServlet",
+        {cmdType: $cmdType},
+        dispBookList);
+}
 
 function onAdd() {
     // Prepare parameters
@@ -13,6 +23,10 @@ function onAdd() {
     let $author = $("#author").val();
     let $subject = $("#subject").val();
     let $isbn = $("#isbn").val();
+    // Check validate
+    checkValidate();
+    if (isValid == false)
+        return;
     // post and receive data
     $.post("BookMnServlet",
         {cmdType: $cmdType, id:$id, title:$title, author:$author, subject:$subject, isbn:$isbn},
@@ -27,6 +41,10 @@ function onUpd() {
     let $author = $("#author").val();
     let $subject = $("#subject").val();
     let $isbn = $("#isbn").val();
+    // Check validate
+    checkValidate();
+    if (isValid == false)
+        return;
     // post and receive data
     $.post("BookMnServlet",
         {cmdType: $cmdType, id:$id, title:$title, author:$author, subject:$subject, isbn:$isbn},
@@ -41,6 +59,19 @@ function onDel() {
     $.post("BookMnServlet",
         {cmdType: $cmdType, id:$id},
         dispBookList);
+}
+
+function checkValidate() {
+    // Prepare parameters
+    let $id = $("#id").val();
+    // Check validate
+    if ($id.trim().length == 0) {
+        alert("ID is required!");
+        $("#id").focus();
+        isValid = false;
+        return;
+    }
+    isValid = true;
 }
 
 function dispBookList(respJson) {

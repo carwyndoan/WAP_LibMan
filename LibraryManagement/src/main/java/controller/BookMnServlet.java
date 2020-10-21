@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import model.Data;
 import model.DataFactory;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,21 +14,29 @@ import java.io.IOException;
 
 @WebServlet("/BookMnServlet")
 public class BookMnServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resps) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Data data = DataFactory.getInstance();
         String cmdType = req.getParameter("cmdType");
         // Check
-        if (cmdType.equals("add")){
-            doAddBook(data, req, resp);
+        if (cmdType.equals("init")) {
+            doLoadInitBooks(data, req, resp);
+        } else if (cmdType.equals("add")){
+                doAddBook(data, req, resp);
         } else if (cmdType.equals("upd")){
             doUpdBook(data, req, resp);
         } else if (cmdType.equals("del")){
             doDelBook(data, req, resp);
         }
 
+    }
+
+    public void doLoadInitBooks(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        // send data to client
+        sendToClient(data, req, resp);
     }
 
     public void doAddBook(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -37,8 +46,9 @@ public class BookMnServlet extends HttpServlet {
         String author   = req.getParameter("author");
         String subject  = req.getParameter("subject");
         String isbn     = req.getParameter("isbn");
-        // Add new book
-        data.addBook(id, title, author, subject, isbn);
+        // Not Exist: Add new book
+        if (data.getBook(id) == null)
+            data.addBook(id, title, author, subject, isbn);
         // send data to client
         sendToClient(data, req, resp);
     }

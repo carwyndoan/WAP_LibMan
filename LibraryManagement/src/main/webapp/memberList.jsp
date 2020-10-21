@@ -118,8 +118,8 @@
                         src="resources/images/down-arrow.png" alt="" role="presentation"></a>
                 <div class="navigation-dropdown-component">
                     <ul class="dropdown-menu browse-menu-options">
-                        <li><a href="https://openlibrary.org/subjects">Books</a></li>
-                        <li><a href="https://openlibrary.org/lists">Members</a></li>
+                        <li><a href="bookList.jsp?">Books</a></li>
+                        <li><a href="memberList.jsp">Members</a></li>
                         <li><a href="https://openlibrary.org/k-12">Borrowing Records</a></li>
                     </ul>
                 </div>
@@ -161,14 +161,12 @@
                         <tr><td><label for="name">Member Name</label></td><td><input type="text" id="name" name="name"></td></tr>
                         <tr><td><label for="address">Address</label></td><td><input type="text" id="address" name="address"></td></tr>
                         <tr><td><label for="phone">Phone</label></td><td><input type="text" id="phone" name="phone"></td></tr>
-                        <tr><td></td><td><input type="button" value="&nbsp;&nbsp;Save&nbsp;&nbsp;" id="upd"></td></tr>
+                        <tr><td></td><td>
+                            <input type="button" value="  Add " id="add">
+                            <input type="button" value="Update" id="upd">
+                            <input type="button" value="Delete" id="del">
+                        </td></tr>
                     </table>
-                    <input type="button" value="Add" id="add">
-                    <input type="button" value="Delete" id="del">
-
-<%--                    <input type="button" value="Add" id="add">--%>
-<%--                    --%>
-<%--                    <input type="button" value="Delete" id="del">--%>
                 </form>
             </div>
             <div id="tabsHistory" class="tabs autohash ui-tabs ui-corner-all ui-widget ui-widget-content">
@@ -180,13 +178,10 @@
                     <table class="changeHistory" id="members">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>&nbsp;</th>
-                                <th>&nbsp;</th>
-
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>ADDRESS</th>
+                                <th>PHONE</th>
                             </tr>
                         </thead>
                         <tbody id="memberBody">

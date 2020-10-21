@@ -14,22 +14,25 @@ import java.io.IOException;
 @WebServlet("/MemberMnServlet")
 public class MemberMnServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resps) throws ServletException, IOException {
-        Data data = DataFactory.getInstance();
-        req.getSession().setAttribute("data", data);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Data data = DataFactory.getInstance();
         String cmdType = req.getParameter("cmdType");
         // Check
-        if (cmdType.equals("add")){
-            doAddMember(data, req, resp);
+        if (cmdType.equals("init")) {
+            doLoadMembers(data, req, resp);
+        } else if (cmdType.equals("add")){
+                doAddMember(data, req, resp);
         } else if (cmdType.equals("upd")){
             doUpdMember(data, req, resp);
         } else if (cmdType.equals("del")){
             doDelMember(data, req, resp);
         }
-
+    }
+    public void doLoadMembers(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        // send data to client
+        sendToClient(data, req, resp);
     }
 
     public void doAddMember(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
