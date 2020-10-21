@@ -46,14 +46,18 @@ function dispMemberList(respJson) {
     // Remove old Data
     let $table = $('#members');
     $table.find($('.member')).remove();
+    $("#memberBody").html("");
     // Update new data
     $.each(respJson, function(i, member){
         // New Row
-        let $row = $("<tr></tr>").addClass("Member");
+        let $row = $("<tr></tr>").addClass("member");
         let colId = $('<td></td>').text(member.id).appendTo($row);
         let colName = $('<td></td>').text(member.name).appendTo($row);
         let colAddress = $('<td></td>').text(member.address).appendTo($row);
         let colPhone = $('<td></td>').text(member.phone).appendTo($row);
+        let upd = $('<td></td>').text("Update").appendTo($row);
+        let del = $('<td></td>').text("Delete").appendTo($row);
+
         $row.appendTo($table);
     });
 }

@@ -14,6 +14,8 @@ import java.io.IOException;
 @WebServlet("/MemberMnServlet")
 public class MemberMnServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resps) throws ServletException, IOException {
+        Data data = DataFactory.getInstance();
+        req.getSession().setAttribute("data", data);
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
