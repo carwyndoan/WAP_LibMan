@@ -1,5 +1,7 @@
 package model;
 
+
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -131,6 +133,19 @@ public class Data {
         return borrows;
     }
 
+    public int getBorrowIdx(String id){
+        for (int i=0; i < borrows.size(); i++){
+            if (borrows.get(i).getBorrowId().equals(id))
+                return i;
+        }
+        // not found
+        return -1;
+    }
+
+    public Borrow getBorrow(String id){
+        return borrows.parallelStream().filter(b -> b.getBorrowId().equals(id)).findAny().orElse(null);
+    }
+
     public List<Borrow> getBorrowRecordsForMember(Member member){
         List<Borrow> temp = new ArrayList<>();
         for (int i = 0; i < borrows.size(); i++){
@@ -141,9 +156,32 @@ public class Data {
         // Not Found
         return temp;
     }
+    public void delBorrow(String id){
+        int idx = getBorrowIdx(id);
+        if (idx != -1)
+            borrows.remove(idx);
+    }
 
     public void addBorrow(Borrow borrow){
         borrows.add(borrow);
+    }
+    public void addBorrow(String borrowId, String bookId, String memberId, LocalDate borrowDate, LocalDate dueDate){
+        Member m = getMember(memberId);
+        Book b = getBook(bookId);
+        Borrow borrow = new Borrow(borrowId, dueDate, borrowDate, m, b);
+        borrows.add(borrow);
+    }
+    public List<Borrow> getOverdueList(){
+        List<Borrow> borrowList = getBorrowList();
+        List<Borrow> dueList = new ArrayList<>();
+        LocalDate today = LocalDate.now();
+
+        for (Borrow b : borrowList){
+            if (b.getDueDate().compareTo(today) < 0){
+                dueList.add(b);
+            }
+        }
+        return dueList;
     }
     //end of nam
 }

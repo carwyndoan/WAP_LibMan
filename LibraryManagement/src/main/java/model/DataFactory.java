@@ -46,11 +46,14 @@ public class DataFactory {
     }
     /*nam*/
     private static void initBorrowData (){
-        for (int i = 1; i <= 20; i++)
+        for (int i = 0; i < 20; i++)
         {
             LocalDate borrowDate = generateRandomDate();
             LocalDate dueDate = borrowDate.plusDays(5);
-            instance.getBorrowList().add(new Borrow(dueDate, borrowDate, instance.getMember("" +i), instance.getBook("" +i)));
+            Member tmpMem = instance.getMemberList().get(i);
+            Book tmpbook = instance.getBookList().get(i);
+            Borrow tmp = new Borrow(("00000000" + i).substring(String.valueOf(i).length()), dueDate, borrowDate, tmpMem, tmpbook);
+            instance.getBorrowList().add(tmp);
         }
     }
 

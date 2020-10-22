@@ -97,9 +97,9 @@ function dispBookList(respJson) {
         let colSubject = $('<td></td>').text(book.subject).appendTo($row);
         let colIsbn = $('<td></td>').text(book.isbn).appendTo($row);
         // Link Checkout
-        let href = "/bookCheckout.jsp?bookId=" + book.id;
+        let href = "bookCheckout.jsp?bookId=" + book.id;
         let collinkCO = $('<td></td>').appendTo($row);
-        $('<a></a>').val(href).text("Checkout").appendTo(collinkCO);
+        $('<a></a>').attr('href',href).val(href).text("Checkout").appendTo(collinkCO);
          $row.appendTo($table);
 */
         let $aCheckOut = "<a href=bookCheckout.jsp?bookId=" + book.id + ">Checkout</a>";
