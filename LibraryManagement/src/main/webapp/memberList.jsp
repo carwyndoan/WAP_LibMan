@@ -34,10 +34,18 @@
             <div id="updMemberForm">
                 <form>
                     <table>
-                        <tr><td><label for="id">Member Id</label></td><td><input type="text" id="id" name="id"></td></tr>
-                        <tr><td><label for="name">Member Name</label></td><td><input type="text" id="name" name="name"></td></tr>
-                        <tr><td><label for="address">Address</label></td><td><input type="text" id="address" name="address"></td></tr>
-                        <tr><td><label for="phone">Phone</label></td><td><input type="text" id="phone" name="phone"></td></tr>
+                        <tr><td><label for="id">Member Id</label><br>
+                                <input type="text" id="id" name="id">
+                            </td>
+                            <td><label for="name">Member Name</label><br>
+                                <input type="text" id="name" name="name">
+                            </td>
+                            <td><label for="address">Address</label><br>
+                                <input type="text" id="address" name="address">
+                            <td><label for="phone">Phone</label><br>
+                                <input type="text" id="phone" name="phone">
+                            </td>
+                        </tr>
                         <tr><td></td><td>
                             <input type="hidden" value="false" id="isValid">
                             <input type="button" value="  Add " id="add">
