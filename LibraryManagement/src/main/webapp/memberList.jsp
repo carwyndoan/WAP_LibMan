@@ -153,6 +153,7 @@
                         <tr><td><label for="address">Address</label></td><td><input type="text" id="address" name="address"></td></tr>
                         <tr><td><label for="phone">Phone</label></td><td><input type="text" id="phone" name="phone"></td></tr>
                         <tr><td></td><td>
+                            <input type="hidden" value="false" id="isValid">
                             <input type="button" value="  Add " id="add">
                             <input type="button" value="Update" id="upd">
                             <input type="button" value="Delete" id="del">

@@ -1,6 +1,5 @@
 $(document).ready(function () {
     console.log("Document is ready!!!");
-    var isValid = false;
     onLoadInitData();
     $('#add').click(onAdd);
     $('#upd').click(onUpd);
@@ -26,7 +25,7 @@ function onAdd() {
     let $isbn = $("#isbn").val();
     // Check validate
     checkValidate();
-    if (isValid == false)
+    if ($('#isValid').val() === "false")
         return;
     // post and receive data
     $.post("BookMnServlet",
@@ -44,7 +43,7 @@ function onUpd() {
     let $isbn = $("#isbn").val();
     // Check validate
     checkValidate();
-    if (isValid == false)
+    if ($('#isValid').val() === "false")
         return;
     // post and receive data
     $.post("BookMnServlet",
@@ -69,10 +68,10 @@ function checkValidate() {
     if ($id.trim().length == 0) {
         alert("ID is required!");
         $("#id").focus();
-        isValid = false;
-        return;
+        $('#isValid').val("false");
     }
-    isValid = true;
+    $('#isValid').val("true");
+
 }
 
 function dispBookList(respJson) {
@@ -82,6 +81,7 @@ function dispBookList(respJson) {
     // Update new data
     $.each(respJson, function(i, book){
         // New Row
+/*
         let $row = $("<tr></tr>").addClass("book");
         let colId = $('<td></td>').text(book.id).appendTo($row);
         let colTitle = $('<td></td>').text(book.title).appendTo($row);
@@ -92,8 +92,11 @@ function dispBookList(respJson) {
         let href = "/bookCheckout.jsp?bookId=" + book.id;
         let collinkCO = $('<td></td>').appendTo($row);
         $('<a></a>').val(href).text("Checkout").appendTo(collinkCO);
-
-        $row.appendTo($table);
+         $row.appendTo($table);
+*/
+        let $aCheckOut = "<a href=bookCheckout.jsp?bookId=" + book.id + ">Checkout</a>";
+        let $book = "<tr><td>" + book.id + "</td><td>" + book.title + "</td><td>" + book.author + "</td><td>" + book.subject + "</td><td>" + book.isbn + "</td><td>" + $aCheckOut + "</td></tr>";
+        $("#books").append($book);
     });
 }
 

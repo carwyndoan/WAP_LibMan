@@ -20,6 +20,8 @@
   <script type="text/javascript">window.q = [];</script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="resources/js/BookMnAjax.js"></script>
+  <script type="text/javascript" src="resources/js/common.js"></script>
+  <script type="text/javascript" src="resources/js/lib.js"></script>
 
   <meta name="description"
         content="Open Library is an open, editable library catalog, building towards a web page for every book ever published. Read, borrow, and discover more than 3M books for free.">
@@ -150,6 +152,7 @@
           <tr><td><label for="subject">Subject</label></td><td><input type="text" id="subject" name="subject"></td></tr>
           <tr><td><label for="isbn">ISBN</label></td><td><input type="text" id="isbn" name="isbn"></td></tr>
           <tr><td></td><td>
+            <input type="hidden" value="false" id="isValid">
             <input type="button" value="Add" id="add">
             <input type="button" value="Update" id="upd">
             <input type="button" value="Delete" id="del">
