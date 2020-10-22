@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import model.Book;
 import model.Data;
 import model.DataFactory;
 
@@ -11,9 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet("/BookMnServlet")
 public class BookMnServlet extends HttpServlet {
+    private class JData<T> {
+        int total;
+        List<T> list;
+        public JData(int total, List<T> list){
+            this.total = total;
+            this.list = list;
+        }
+    }
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
@@ -21,6 +33,7 @@ public class BookMnServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Data data = DataFactory.getInstance();
         String cmdType = req.getParameter("cmdType");
+
         // Check
         if (cmdType.equals("init")) {
             doLoadInitBooks(data, req, resp);
@@ -75,9 +88,23 @@ public class BookMnServlet extends HttpServlet {
     }
 
     public void sendToClient(Data data, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
         String respJson = new Gson().toJson(data.getBookList());
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         resp.getWriter().write(respJson);
+
+/*
+        int pageno = Integer.parseInt(req.getParameter("pageno"));
+        int pageSize = 9;
+        List<Book> list = data.getBookList();
+        List<Book> lst = list.stream()
+                .skip((pageno - 1) * pageSize)
+                .limit(pageSize)
+                .collect(Collectors.toList());
+        BookMnServlet.JData jdata = new BookMnServlet.JData(list.size(), lst);
+        String respJson = new Gson().toJson(jdata);
+        resp.getWriter().write(respJson);
+*/
     }
 }

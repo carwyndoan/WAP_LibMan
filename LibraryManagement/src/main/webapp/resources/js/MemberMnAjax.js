@@ -5,6 +5,13 @@ $(document).ready(function () {
     $('#upd').click(onUpd);
     $('#del').click(onDel);
     $('#toexcel').click(ExportToExcel);
+    // Search local
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
 });
 
 function onLoadInitData() {
@@ -91,35 +98,9 @@ function dispMemberList(respJson) {
         let colPhone = $('<td></td>').text(member.phone).appendTo($row);
         $row.appendTo($table);
 */
-        let $member = "<tr><td>" + member.id + "</td><td>" + member.name + "</td><td>" + member.address + "</td><td>" + member.phone + "</td></tr>";
+        let $member = "<tr class=\"member\"><td>" + member.id + "</td><td>" + member.name + "</td><td>" + member.address + "</td><td>" + member.phone + "</td></tr>";
         $("#members").append($member);
     });
-
-/*
-    $('#demo').pagination({
-        dataSource: [1, 2, 3, 4, 5, 6, 7, ... , 100],
-    pageSize: 5,
-        showPrevious: false,
-        showNext: false,
-        callback: function(data, pagination) {
-        // template method of yourself
-        var html = template(data);
-        dataContainer.html(html);
-    }
-})
-*/
-
-    $('#demo').pagination({
-        dataSource: respJson,
-    pageSize: 2,
-        showPrevious: false,
-        showNext: false,
-        callback: function(data, pagination) {
-        // template method of yourself
-        let html = template(data);
-        dataContainer.html(html);
-        }
-    })
 }
 
 function ExportToExcel(mytblId){

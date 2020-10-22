@@ -143,7 +143,7 @@
             </h1>
         </div>
         <div id="contentBody">
-            <div>Search Members: <input type="text"/><input type="submit" value=" Search "  /></div>
+            <div>Search Members: <input type="text" id="myInput"/></div>
             <hr/>
             <div id="updMemberForm">
                 <form>

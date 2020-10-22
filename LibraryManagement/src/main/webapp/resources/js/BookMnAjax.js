@@ -5,7 +5,15 @@ $(document).ready(function () {
     $('#upd').click(onUpd);
     $('#del').click(onDel);
     $('#toexcel').click(ExportToExcel);
+    // Search local
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
 });
+
 
 function onLoadInitData() {
     // Prepare parameters
@@ -95,7 +103,7 @@ function dispBookList(respJson) {
          $row.appendTo($table);
 */
         let $aCheckOut = "<a href=bookCheckout.jsp?bookId=" + book.id + ">Checkout</a>";
-        let $book = "<tr><td>" + book.id + "</td><td>" + book.title + "</td><td>" + book.author + "</td><td>" + book.subject + "</td><td>" + book.isbn + "</td><td>" + $aCheckOut + "</td></tr>";
+        let $book = "<tr class=\"book\"><td>" + book.id + "</td><td>" + book.title + "</td><td>" + book.author + "</td><td>" + book.subject + "</td><td>" + book.isbn + "</td><td>" + $aCheckOut + "</td></tr>";
         $("#books").append($book);
     });
 }
