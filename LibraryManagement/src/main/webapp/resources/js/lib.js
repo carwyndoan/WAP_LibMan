@@ -1,8 +1,12 @@
 $(document).ready(function () {
     $("#btnBook").click(function () {
+        first = 1;
+        last = first + 9;
         inquiry("book", 1, showBooks);
     });
     $("#btnMember").click(function () {
+        first = 1;
+        last = first + 9;
         inquiry("member", 1, showMembers);
     });
 });
