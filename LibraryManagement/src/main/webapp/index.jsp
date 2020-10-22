@@ -69,7 +69,7 @@
                 style="opacity: 1; width: 100%; transform: translate3d(0px, 0px, 0px); text-align: center" >
                 <a href="bookList.jsp" class="myButton">Books</a>
                 <a href="memberList.jsp" class="myButton">Members</a>
-                <a href="BookMnServlet" class="myButton">Borrows</a>
+                <a href="BorrowServlet" class="myButton">Borrows</a>
                 <a href="searchFunction.jsp" class="myButton">Search</a>
 
               </div>
