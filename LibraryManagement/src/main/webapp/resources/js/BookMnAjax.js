@@ -76,6 +76,7 @@ function checkValidate() {
         alert("ID is required!");
         $("#id").focus();
         $('#isValid').val("false");
+        return;
     }
     $('#isValid').val("true");
 }
