@@ -16,7 +16,7 @@ public class ReturnServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String borrowId = req.getParameter("BorrowId");
         DataFactory.getInstance().delBorrow(borrowId);
-        resp.sendRedirect("borrowList.jsp");
+        resp.sendRedirect("BorrowServlet");
     }
 
     @Override

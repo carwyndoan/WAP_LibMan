@@ -70,7 +70,7 @@
                 <a href="bookList.jsp" class="myButton">Books</a>
                 <a href="memberList.jsp" class="myButton">Members</a>
                 <a href="bookList.jsp" class="myButton">Borrows</a>
-                <a href="search.jsp" class="myButton">Search</a>
+                <a href="searchFunction.jsp" class="myButton">Search</a>
 
               </div>
             </div>

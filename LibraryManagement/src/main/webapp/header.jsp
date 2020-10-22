@@ -34,7 +34,7 @@
             <ul class="dropdown-menu hamburger-dropdown-menu">
                 <li class="more-menu"><a href="bookList.jsp">Books</a></li>
                 <li class="more-menu"><a href="bookList.jsp">Members</a></li>
-                <li class="more-menu"><a href="borrowList.jsp">Borrows</a></li>
+                <li class="more-menu"><a href="BorrowServlet">Borrows</a></li>
                 <li class="more-menu"><a href="searchFunction.jsp">Search</a></li>
 
             </ul>
@@ -54,7 +54,7 @@
     <ul class="navigation-component">
         <li class="more-menu"><a href="bookList.jsp">Books</a></li>
         <li class="more-menu"><a href="memberList.jsp">Members</a></li>
-        <li class="more-menu"><a href="borrowList.jsp">Borrows</a></li>
+        <li class="more-menu"><a href="BorrowServlet">Borrows</a></li>
         <li class="more-menu"><a href="searchFunction.jsp">Search</a></li>
     </ul>
 

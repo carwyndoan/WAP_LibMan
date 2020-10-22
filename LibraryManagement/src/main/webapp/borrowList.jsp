@@ -1,21 +1,14 @@
-<%@page import="model.DataFactory,model.Data" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.Borrow" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Arrays" %>
-<%
-    List<Borrow> sessBorrowList = DataFactory.getInstance().getBorrowList();
-//    if ( request.getSession().getAttribute("borrowList") != null) {
-//        sessBorrowList = (List<Borrow>) request.getSession().getAttribute("borrowList");
-//    }
-%>
+<%@ page import="Utils.Util" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="resources/css/page-user.css" rel="stylesheet" type="text/css">
@@ -44,7 +37,7 @@
         </div>
         <div id="contentBody">
             <form action="BorrowServlet" method="get">
-            <div>BookID:
+            <div>Borrow Id:
                 <input type="text" name="borrowSearchText" value="<%=(request.getParameter("borrowSearchText") == null ? "" : request.getParameter("borrowSearchText"))%>"/><input type="submit" value=" Search "  /></div>
             </form>
             <hr/>
@@ -70,40 +63,43 @@
                         </thead>
                         <tbody>
                         <%
+                            List<Borrow> borrowList = (List<Borrow>)request.getAttribute("borrList");
+                            int pageSize = (int)request.getAttribute("pageSize");
+                            int currentPage = (int)request.getAttribute("currentPage");
+                            String borrowSearchText = Util.convertNullStringToBlank(request.getParameter("borrowSearchText"));
 
-                            for (Borrow b : sessBorrowList)
-                            {
-                                String borrowSearchText = request.getParameter("borrowSearchText") == null ? "" : request.getParameter("borrowSearchText");
-                                if (borrowSearchText.equals("") || b.getBook().getId().equals(borrowSearchText)){
+                            for(Borrow borr : borrowList){
                         %>
                             <tr>
-                                <td class="time"><%= b.getBorrowId() %></td>
+                                <td class="time"><%=borr.getBorrowId()%></td>
 
-                                <td class="time"><%= b.getBook().getId() %></td>
-                                <td class="path">
-                                    <%=b.getBook().getTitle()%>
+                                <td class="time"><%=borr.getBook().getId()%></td>
+                                <td class="path"> <%=borr.getBook().getTitle()%>
                                 </td>
-                                <td class="displayname"><%= b.getMember().getName() %></td>
-                                <td class="comment"> <%= b.getBorrowDate() %>
+                                <td class="displayname"><%=borr.getMember().getName()%>
                                 </td>
-                                <td><%=b.getDueDate()%></td>
-                                <td><a href="bookReturn.jsp?borrowId=<%=b.getBorrowId()%>">Return</a></td>
+                                <td class="comment"><%=borr.getBorrowDate().toString()%>
+                                </td>
+                                <td><%=borr.getDueDate().toString()%></td>
+                                <td><a href="bookReturn.jsp?borrowId=<%=borr.getBorrowId()%>">Return</a></td>
 
                             </tr>
                         <%
-                                }
                             }
                         %>
                         </tbody>
                     </table>
 
                     <div class="historyPager small sansserif gray">
-                        <a href="borrowList.jsp?page=-1" rel="nofollow">Prev</a>
-
-                        <a href="borrowList.jsp?page=1" rel="nofollow">1</a>
-                        <a href="borrowList.jsp?page=2" rel="nofollow">2</a>
-
-                        <a href="borrowList.jsp?page=+1" rel="nofollow">Next</a>
+                        <a href="BorrowServlet?page=<%=currentPage - 1%>&<%=borrowSearchText.equals("")?"":"borrowSearchText="+ borrowSearchText%>" rel="nofollow">Prev</a>
+                        <%
+                            for(int i = 1; i <= pageSize; i++){
+                        %>
+                        <a href="BorrowServlet?page=<%=i%>&<%=borrowSearchText.equals("")?"":"borrowSearchText="+ borrowSearchText%>" rel="nofollow"> <%=i%> </a>
+                        <%
+                            }
+                        %>
+                        <a href="BorrowServlet?page=<%=currentPage + 1%>&<%=borrowSearchText.equals("")?"":"borrowSearchText="+ borrowSearchText%>" rel="nofollow">Next</a>
 
                     </div>
                 </div>

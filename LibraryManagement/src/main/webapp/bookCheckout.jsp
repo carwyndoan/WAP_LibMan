@@ -68,7 +68,7 @@
                 <tr><td>Due Date</td><td>
                     <input required type="text" name="dueDate" id="dueDate"/></td></tr>
                 <tr><td></td><td><input type="submit" value=" Checkout " />&nbsp;
-                    <input type="button" value=" Cancel " onclick="window.location.href = 'bookList.jsp';" /></td></tr>
+                    <input type="button" value=" Cancel " onclick="window.location.href = 'BorrowServlet';" /></td></tr>
             </table>
 
         </form>

@@ -32,7 +32,7 @@ public class CheckoutServlet extends HttpServlet {
         Borrow maxBorrow = Collections.max(inst.getBorrowList(), Comparator.comparing(b -> (Integer.valueOf(b.getBorrowId()))));
         String maxBorrowStr = ("00000000" + (Integer.parseInt(maxBorrow.getBorrowId()) + 1)).substring(String.valueOf(Integer.parseInt(maxBorrow.getBorrowId()) + 1).length());
         DataFactory.getInstance().addBorrow(maxBorrowStr, bookId, memberId,borrowDate,dueDate);
-        resp.sendRedirect("borrowList.jsp");
+        resp.sendRedirect("BorrowServlet");
         return;
     }
 }

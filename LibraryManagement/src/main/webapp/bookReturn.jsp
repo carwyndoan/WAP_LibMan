@@ -58,7 +58,7 @@
                 <tr><td>Remarks</td><td>
                     <input type="text" name="Remarks" style="width: 300px"/></td></tr>
                 <tr><td></td><td><input type="submit" value=" Return Book " />&nbsp;
-                    <input type="button" value=" Cancel " onclick="window.location.href = 'borrowList.jsp';" /></td></tr>
+                    <input type="button" value=" Cancel " onclick="window.location.href = 'BorrowServlet';" /></td></tr>
             </table>
 
         </form>
