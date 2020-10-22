@@ -79,7 +79,6 @@ function checkValidate() {
         $('#isValid').val("false");
     }
     $('#isValid').val("true");
-
 }
 
 function dispBookList(respJson) {

@@ -67,8 +67,9 @@
           </tbody>
         </table>
         <div class="historyPager small sansserif gray">
-          <a href="/recentchanges/lists?page=2#all" rel="nofollow"><- Older</a>
-          <input type="button" value="Export to Excel" id="toexcel">
+          <!-- <a href="/recentchanges/lists?page=2#all" rel="nofollow"><- Older</a>
+          -->
+          <br><input type="button" value="Export to Excel" id="toexcel">
         </div>
       </div>
     </div>

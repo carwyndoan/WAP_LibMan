@@ -21,10 +21,10 @@ public class MemberMnServlet extends HttpServlet {
         Data data = DataFactory.getInstance();
         String cmdType = req.getParameter("cmdType");
         // Check
-        if (cmdType.equals("init")) {
+        if (cmdType.equals("init")){
             doLoadMembers(data, req, resp);
         } else if (cmdType.equals("add")){
-                doAddMember(data, req, resp);
+            doAddMember(data, req, resp);
         } else if (cmdType.equals("upd")){
             doUpdMember(data, req, resp);
         } else if (cmdType.equals("del")){

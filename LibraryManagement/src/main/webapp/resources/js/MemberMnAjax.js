@@ -8,7 +8,7 @@ $(document).ready(function () {
     // Search local
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
+        $("#memberBody tr").filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
     });
@@ -69,24 +69,20 @@ function onDel() {
 function checkValidate() {
     // Prepare parameters
     let $id = $("#id").val();
-    let $name = $("#name").val();
-    let $address = $("#address").val();
-    let $phone = $("#phone").val();
     // Check validate
     if ($id.trim().length == 0) {
         alert("ID is required!");
         $("#id").focus();
-        isValid = false;
-        return;
+        $('#isValid').val("false");
     }
-    isValid = true;
+    $('#isValid').val("true");
 }
 
 function dispMemberList(respJson) {
     // Remove old Data
     let $table = $('#members');
     $table.find($('.member')).remove();
-    $("#memberBody").html("");
+    // $("#memberBody").html("");
     // Update new data
     $.each(respJson, function(i, member){
         // New Row
