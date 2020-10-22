@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 public class Data {
     private List<Book> books;
     private ArrayList<Member> members;
-
     /*nam*/
     private List<Borrow> borrows;
     /*end of nam*/

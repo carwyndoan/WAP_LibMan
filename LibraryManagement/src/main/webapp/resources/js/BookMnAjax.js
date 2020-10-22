@@ -14,7 +14,6 @@ $(document).ready(function () {
     });
 });
 
-
 function onLoadInitData() {
     // Prepare parameters
     let $cmdType = "init";
@@ -88,19 +87,6 @@ function dispBookList(respJson) {
     // Update new data
     $.each(respJson, function(i, book){
         // New Row
-/*
-        let $row = $("<tr></tr>").addClass("book");
-        let colId = $('<td></td>').text(book.id).appendTo($row);
-        let colTitle = $('<td></td>').text(book.title).appendTo($row);
-        let colAuthor = $('<td></td>').text(book.author).appendTo($row);
-        let colSubject = $('<td></td>').text(book.subject).appendTo($row);
-        let colIsbn = $('<td></td>').text(book.isbn).appendTo($row);
-        // Link Checkout
-        let href = "bookCheckout.jsp?bookId=" + book.id;
-        let collinkCO = $('<td></td>').appendTo($row);
-        $('<a></a>').attr('href',href).val(href).text("Checkout").appendTo(collinkCO);
-         $row.appendTo($table);
-*/
         let $aCheckOut = "<a href=bookCheckout.jsp?bookId=" + book.id + ">Checkout</a>";
         let $book = "<tr class=\"book\"><td>" + book.id + "</td><td>" + book.title + "</td><td>" + book.author + "</td><td>" + book.subject + "</td><td>" + book.isbn + "</td><td>" + $aCheckOut + "</td></tr>";
         $("#books").append($book);
